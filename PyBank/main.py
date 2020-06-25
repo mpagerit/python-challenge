@@ -3,8 +3,11 @@ import csv
 
 #import os
 import os
-#path to collect data from teh resources folder
+#path to collect data from the resources folder
 bank_csv = os.path.join('Resources', 'budget_data.csv')
+
+#path to write data to the analysis folder
+#results_csv = os.path.join('..', 'analysis', 'PyBankResults.txt')
 
 months = 0
 total = 0
@@ -43,6 +46,13 @@ with open(bank_csv, 'r') as csvfile:
     print(f'Greatest Increase in Profits: {highDay} (${maximum})')
     print(f'Greatest Decrease in Profits: {lowDay} (${minimum})')
 
+    #output the results in a text file
+    text_file = open('PyBankResults.txt', 'w')
+    text_file.write(f'Total Months: {months}''\n')
+    text_file.write(f'Total: ${total}''\n')
+    text_file.write(f'Greatest Increase in Profits: {highDay} (${maximum})''\n')
+    text_file.write(f'Greatest Decrease in Profits: {lowDay} (${minimum})')
+    text_file.close
 
 
 
