@@ -51,8 +51,8 @@ with open(bank_csv, 'r') as csvfile:
 
     #output the results in a text file
     with open(results_txt, 'w') as text_file:
-        text_file.write('Financial Analysis')
-        text_file.write('-----------------------------------')
+        text_file.write('Financial Analysis''\n')
+        text_file.write('-----------------------------------''\n')
         text_file.write(f'Total Months: {months}''\n')
         text_file.write(f'Total: ${total}''\n')
         text_file.write(f'Greatest Increase in Profits: {highDay} (${maximum})''\n')
