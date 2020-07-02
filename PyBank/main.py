@@ -1,14 +1,15 @@
-#import csv
+#import 
 import csv
 
-#import os
 import os
+
 #path to collect data from the resources folder
 bank_csv = os.path.join('Resources', 'budget_data.csv')
 
 #path to write data to the analysis folder
-#results_csv = os.path.join('..', 'analysis', 'PyBankResults.txt')
+results_txt = os.path.join('analysis', 'PyBankResults.txt')
 
+#set initial values to
 months = 0
 total = 0
 maximum = 0
@@ -20,8 +21,8 @@ with open(bank_csv, 'r') as csvfile:
     #split the data on commas
     csvreader = csv.reader(csvfile, delimiter=',')
 
-    #skip the header row
-    next(csvreader)
+    #store the header row
+    header = next(csvreader)
 
     #loop through the data
     for row in csvreader:
@@ -40,6 +41,8 @@ with open(bank_csv, 'r') as csvfile:
             lowDay = row[0]
 
     # print the number of months and the total profits/losses
+    print('Financial Analysis')
+    print('-----------------------------------')
     print(f'Total Months: {months}')
     print(f'Total: ${total}')
     #print the greatest increase and greatest decrease
@@ -47,12 +50,13 @@ with open(bank_csv, 'r') as csvfile:
     print(f'Greatest Decrease in Profits: {lowDay} (${minimum})')
 
     #output the results in a text file
-    text_file = open('PyBankResults.txt', 'w')
-    text_file.write(f'Total Months: {months}''\n')
-    text_file.write(f'Total: ${total}''\n')
-    text_file.write(f'Greatest Increase in Profits: {highDay} (${maximum})''\n')
-    text_file.write(f'Greatest Decrease in Profits: {lowDay} (${minimum})')
-    text_file.close
+    with open(results_txt, 'w') as text_file:
+        text_file.write('Financial Analysis')
+        text_file.write('-----------------------------------')
+        text_file.write(f'Total Months: {months}''\n')
+        text_file.write(f'Total: ${total}''\n')
+        text_file.write(f'Greatest Increase in Profits: {highDay} (${maximum})''\n')
+        text_file.write(f'Greatest Decrease in Profits: {lowDay} (${minimum})')
 
 
 
